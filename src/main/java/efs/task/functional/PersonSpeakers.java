@@ -19,7 +19,8 @@ class PersonSpeakers {
         //      "HELLO. I'M MARIA.", gdzie Maria to imię danej osoby przekazanej w argumencie metody say().
         //  Wywołanie metody say() interfejsu odbywa się w testach metody.
         //  Aby być pewnym, że użyta jest prawidłowa pisownia zaleca się użycie odpowiedniej stałej.
-        return null;
+
+        return p -> HELLO.toUpperCase() + p.getName().toUpperCase() + ".";
     }
 
     Speaker createGreetLocalSpeaker() {
@@ -28,6 +29,19 @@ class PersonSpeakers {
         //       "Hello. I'm Antonina.", gdzie Antonina to imię danej osoby przekazanej w argumencie metody say().
         //  Wywołanie metody say() interfejsu odbywa się w testach metody.
         //  Aby być pewnym, że użyta jest prawidłowa pisownia zaleca się użycie odpowiednich stałych.
-        return null;
+
+        return p -> {
+            String greetings = "";
+            if (p.getCountryOfLiving().equals(Country.PL)) {
+                greetings = CZESC + p.getName();
+            }
+            else if (p.getCountryOfLiving().equals(Country.USA)) {
+                greetings = HELLO + p.getName();
+            }
+            else if (p.getCountryOfLiving().equals(Country.DE)) {
+                greetings = HALLO + p.getName();
+            }
+            return greetings;
+        };
     }
 }
